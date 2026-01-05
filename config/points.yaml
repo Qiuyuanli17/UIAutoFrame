@@ -1,0 +1,48 @@
+common:
+  back:
+    x: 216
+    y: 108
+
+
+home:
+  intelligent_detection:
+    x: 1096
+    y: 763
+  custom_points:
+    x: 1905
+    y: 763
+  medical_record:
+    x: 1096
+    y: 1306
+  routine_detection:
+    x: 1905
+    y: 1306
+
+custom_points:
+  add:
+    x: 2469
+    y: 1519
+  delete:
+    x: 2469
+    y: 431
+  edit:
+    x: 2157
+    y: 1748
+  restore:
+    x: 1987
+    y: 1740
+  finish:
+    x: 2329
+    y: 1748
+  front_face:
+    x: 656
+    y: 1712
+  side_face:
+    x: 892
+    y: 1712
+  submentum:
+    x: 1128
+    y: 1712  
+  point_item:
+    x: 2142
+    y: 431  

@@ -1,0 +1,25 @@
+2025-12-30 17:49:21,298 | INFO | 【自定义点位】开始完整流程
+2025-12-30 17:49:21,299 | INFO | [ACTION] click_point: home.custom_points
+2025-12-30 17:49:22,196 | INFO | 【自定义点位】进入自定义点位页面
+2025-12-30 17:49:22,197 | INFO | [ACTION] click_point: custom_points.front_face
+2025-12-30 17:49:23,112 | INFO | [ACTION] click_point: custom_points.side_face
+2025-12-30 17:49:24,059 | INFO | [ACTION] click_point: custom_points.submentum
+2025-12-30 17:49:25,005 | INFO | 【自定义点位】遍历人脸朝向
+2025-12-30 17:49:25,006 | INFO | [ACTION] click_point: custom_points.point_item
+2025-12-30 17:49:25,947 | INFO | 【自定义点位】点击第一个点位
+2025-12-30 17:49:25,948 | INFO | [ACTION] click_point: custom_points.edit
+2025-12-30 17:49:26,869 | INFO | [ACTION] click_point: custom_points.restore
+2025-12-30 17:49:27,790 | INFO | 【自定义点位】点位还原完成
+2025-12-30 17:49:27,790 | INFO | [ACTION] click_point: custom_points.delete
+2025-12-30 17:49:28,733 | INFO | [ACTION] click_point: custom_points.delete
+2025-12-30 17:49:29,661 | INFO | [ACTION] click_point: custom_points.delete
+2025-12-30 17:49:30,583 | INFO | [ACTION] click_point: custom_points.delete
+2025-12-30 17:49:31,493 | INFO | 【自定义点位】删除点位数: 4
+2025-12-30 17:49:31,494 | INFO | [ACTION] click_point: custom_points.add
+2025-12-30 17:49:32,425 | INFO | [ACTION] click_point: custom_points.add
+2025-12-30 17:49:33,354 | INFO | [ACTION] click_point: custom_points.add
+2025-12-30 17:49:34,286 | INFO | 【自定义点位】新增点位数: 3
+2025-12-30 17:49:34,286 | INFO | [ACTION] click_point: custom_points.finish
+2025-12-30 17:49:35,219 | INFO | [ACTION] click_point: common.back
+2025-12-30 17:49:36,134 | INFO | 【自定义点位】完成并返回
+2025-12-30 17:49:36,135 | INFO | 【自定义点位】最终点位结果: 19

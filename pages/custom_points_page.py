@@ -1,0 +1,10 @@
+class CustomPointsPage:
+    ADD = "custom_points.add"
+    DELETE = "custom_points.delete"
+    EDIT = "custom_points.edit"
+    RESTORE = "custom_points.restore"
+    FINISH = "custom_points.finish"
+    FRONT_FACE = "custom_points.front_face"
+    SIDE_FACE = "custom_points.side_face"
+    SUBMENTUM = "custom_points.submentum"
+    POINT_ITEM = "custom_points.point_item"
