@@ -50,9 +50,8 @@ def main():
     # flow = CustomPointsFlow(ex)
     # flow.open_point_and_back()
 
-    # 2026/1/7
-    # pull测试
-    
+
+    # 0107
 
 
 if __name__ == "__main__":
