@@ -1,0 +1,19 @@
+# 设备配置
+default:
+  platformName: Android
+  platformVersion: '15'
+  deviceName: AU6NBB5328000488
+  automationName: UiAutomator2
+  noReset: true
+  newCommandTimeout: 600
+
+# 可配置多台设备
+white_device:
+  platformName: Android
+  platformVersion: '15'
+  deviceName: AU6NBB5313000930
+  automationName: UiAutomator2
+  noReset: true
+  newCommandTimeout: 600
+
+

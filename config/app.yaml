@@ -1,0 +1,5 @@
+# 应用配置
+peninsula:
+  appPackage: com.ultrasound.peninsula
+  appActivity: com.ultrasound.usdemo.MainActivity
+  appName: Peninsula超声应用

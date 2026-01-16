@@ -1,0 +1,13 @@
+# Appium 相关
+Appium-Python-Client==5.2.4
+selenium==4.39.0
+
+# 测试框架
+pytest==9.0.2
+pytest-html==4.1.1
+
+# 配置文件解析
+PyYAML==6.0.3
+
+# 日志与报告
+colorama==0.4.6

@@ -1,0 +1,187 @@
+INFO     root:driver_manager.py:16 正在连接 Appium 服务器: http://localhost:4723
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:404 POST http://localhost:4723/session {'capabilities': {'firstMatch': [{}], 'alwaysMatch': {'appium:automationName': 'UiAutomator2', 'platformName': 'Android', 'appium:platformVersion': '15', 'appium:deviceName': 'AU6NBB5328000488', 'appium:noReset': True, 'appium:newCommandTimeout': 600, 'appium:appPackage': 'com.ultrasound.peninsula', 'appium:appActivity': 'com.ultrasound.usdemo.MainActivity', 'appium:appName': 'Peninsula超声应用'}}}
+DEBUG    urllib3.connectionpool:connectionpool.py:241 Starting new HTTP connection (1): localhost:4723
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:4723 "POST /session HTTP/1.1" 200 0
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:437 Remote response: status=200 | data={"value":{"capabilities":{"platformName":"Android","automationName":"UiAutomator2","platformVersion":"15","deviceName":"AU6NBB5313000930","noReset":true,"newCommandTimeout":600,"appPackage":"com.ultrasound.peninsula","appActivity":"com.ultrasound.usdemo.MainActivity","appName":"Peninsula超声应用","platform":"LINUX","webStorageEnabled":false,"takesScreenshot":true,"javascriptEnabled":true,"databaseEnabled":false,"networkConnectionEnabled":true,"locationContextEnabled":false,"warnings":{},"desired":{"platformName":"Android","automationName":"UiAutomator2","platformVersion":"15","deviceName":"AU6NBB5328000488","noReset":true,"newCommandTimeout":600,"appPackage":"com.ultrasound.peninsula","appActivity":"com.ultrasound.usdemo.MainActivity","appName":"Peninsula超声应用"},"deviceUDID":"AU6NBB5313000930","pixelRatio":"2.5","statBarHeight":80,"viewportRect":{"left":0,"top":80,"width":3000,"height":1840},"deviceApiLevel":35,"deviceManufacturer":"HONOR","deviceModel":"ROD2-W69","deviceScreenSize":"3000x1920","deviceScreenDensity":400},"sessionId":"0a5e5178-8a97-4351-9531-9c4b399b7bf3"}} | headers=HTTPHeaderDict({'X-Powered-By': 'Express', 'Vary': 'X-HTTP-Method-Override', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '1100', 'ETag': 'W/"44c-/rKjd91LqamHLHJsIUKgwSJcZrc"', 'Date': 'Fri, 16 Jan 2026 10:27:17 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=600'})
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:466 Finished Request
+INFO     root:driver_manager.py:21 连接成功，会话ID: 0a5e5178-8a97-4351-9531-9c4b399b7bf3
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:404 POST http://localhost:4723/session/0a5e5178-8a97-4351-9531-9c4b399b7bf3/execute/sync {'script': 'mobile: activateApp', 'args': [{'appId': 'com.ultrasound.peninsula', 'bundleId': 'com.ultrasound.peninsula'}]}
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:4723 "POST /session/0a5e5178-8a97-4351-9531-9c4b399b7bf3/execute/sync HTTP/1.1" 200 0
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:437 Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'X-Powered-By': 'Express', 'Vary': 'X-HTTP-Method-Override', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '14', 'ETag': 'W/"e-9/1BuKMgFObM1mWJm+YjxtXJnUM"', 'Date': 'Fri, 16 Jan 2026 10:27:17 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=600'})
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:466 Finished Request
+INFO     root:driver_manager.py:38 应用已激活: com.ultrasound.peninsula
+INFO     root:test_custom_points.py:51 ============================================================
+INFO     root:test_custom_points.py:52 开始测试: test_custom_points_full_flow
+INFO     root:test_custom_points.py:53 ============================================================
+INFO     root:custom_points_flow.py:28 ==================================================
+INFO     root:custom_points_flow.py:29 【自定义点位】开始完整流程
+INFO     root:custom_points_flow.py:30 ==================================================
+INFO     root:home_page.py:23 [HomePage] 进入自定义点位
+INFO     root:action_executor.py:59 [ACTION] click_point: home.custom_points
+INFO     root:action_executor.py:17 [ACTION] 点击坐标: (1905, 763)
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:404 POST http://localhost:4723/session/0a5e5178-8a97-4351-9531-9c4b399b7bf3/actions {'actions': [{'type': 'pointer', 'parameters': {'pointerType': 'touch'}, 'id': 'touch', 'actions': [{'type': 'pointerMove', 'duration': 250, 'x': 1905, 'y': 763, 'origin': 'viewport'}, {'type': 'pointerDown', 'duration': 0, 'button': 0}, {'type': 'pause', 'duration': 100}, {'type': 'pointerUp', 'duration': 0, 'button': 0}]}]}
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:4723 "POST /session/0a5e5178-8a97-4351-9531-9c4b399b7bf3/actions HTTP/1.1" 200 0
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:437 Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'X-Powered-By': 'Express', 'Vary': 'X-HTTP-Method-Override', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '14', 'ETag': 'W/"e-9/1BuKMgFObM1mWJm+YjxtXJnUM"', 'Date': 'Fri, 16 Jan 2026 10:27:17 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=600'})
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:466 Finished Request
+INFO     root:custom_points_page.py:24 [CustomPointsPage] 点击正脸
+INFO     root:action_executor.py:59 [ACTION] click_point: custom_points.front_face
+INFO     root:action_executor.py:17 [ACTION] 点击坐标: (656, 1712)
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:404 POST http://localhost:4723/session/0a5e5178-8a97-4351-9531-9c4b399b7bf3/actions {'actions': [{'type': 'pointer', 'parameters': {'pointerType': 'touch'}, 'id': 'touch', 'actions': [{'type': 'pointerMove', 'duration': 250, 'x': 656, 'y': 1712, 'origin': 'viewport'}, {'type': 'pointerDown', 'duration': 0, 'button': 0}, {'type': 'pause', 'duration': 100}, {'type': 'pointerUp', 'duration': 0, 'button': 0}]}]}
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:4723 "POST /session/0a5e5178-8a97-4351-9531-9c4b399b7bf3/actions HTTP/1.1" 200 0
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:437 Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'X-Powered-By': 'Express', 'Vary': 'X-HTTP-Method-Override', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '14', 'ETag': 'W/"e-9/1BuKMgFObM1mWJm+YjxtXJnUM"', 'Date': 'Fri, 16 Jan 2026 10:27:18 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=600'})
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:466 Finished Request
+INFO     root:custom_points_page.py:29 [CustomPointsPage] 点击侧脸
+INFO     root:action_executor.py:59 [ACTION] click_point: custom_points.side_face
+INFO     root:action_executor.py:17 [ACTION] 点击坐标: (892, 1712)
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:404 POST http://localhost:4723/session/0a5e5178-8a97-4351-9531-9c4b399b7bf3/actions {'actions': [{'type': 'pointer', 'parameters': {'pointerType': 'touch'}, 'id': 'touch', 'actions': [{'type': 'pointerMove', 'duration': 250, 'x': 892, 'y': 1712, 'origin': 'viewport'}, {'type': 'pointerDown', 'duration': 0, 'button': 0}, {'type': 'pause', 'duration': 100}, {'type': 'pointerUp', 'duration': 0, 'button': 0}]}]}
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:4723 "POST /session/0a5e5178-8a97-4351-9531-9c4b399b7bf3/actions HTTP/1.1" 200 0
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:437 Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'X-Powered-By': 'Express', 'Vary': 'X-HTTP-Method-Override', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '14', 'ETag': 'W/"e-9/1BuKMgFObM1mWJm+YjxtXJnUM"', 'Date': 'Fri, 16 Jan 2026 10:27:19 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=600'})
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:466 Finished Request
+INFO     root:custom_points_page.py:34 [CustomPointsPage] 点击颏下
+INFO     root:action_executor.py:59 [ACTION] click_point: custom_points.submentum
+INFO     root:action_executor.py:17 [ACTION] 点击坐标: (1128, 1712)
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:404 POST http://localhost:4723/session/0a5e5178-8a97-4351-9531-9c4b399b7bf3/actions {'actions': [{'type': 'pointer', 'parameters': {'pointerType': 'touch'}, 'id': 'touch', 'actions': [{'type': 'pointerMove', 'duration': 250, 'x': 1128, 'y': 1712, 'origin': 'viewport'}, {'type': 'pointerDown', 'duration': 0, 'button': 0}, {'type': 'pause', 'duration': 100}, {'type': 'pointerUp', 'duration': 0, 'button': 0}]}]}
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:4723 "POST /session/0a5e5178-8a97-4351-9531-9c4b399b7bf3/actions HTTP/1.1" 200 0
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:437 Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'X-Powered-By': 'Express', 'Vary': 'X-HTTP-Method-Override', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '14', 'ETag': 'W/"e-9/1BuKMgFObM1mWJm+YjxtXJnUM"', 'Date': 'Fri, 16 Jan 2026 10:27:20 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=600'})
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:466 Finished Request
+INFO     root:custom_points_page.py:39 [CustomPointsPage] 点击第一个点位
+INFO     root:action_executor.py:59 [ACTION] click_point: custom_points.point_item
+INFO     root:action_executor.py:17 [ACTION] 点击坐标: (2142, 431)
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:404 POST http://localhost:4723/session/0a5e5178-8a97-4351-9531-9c4b399b7bf3/actions {'actions': [{'type': 'pointer', 'parameters': {'pointerType': 'touch'}, 'id': 'touch', 'actions': [{'type': 'pointerMove', 'duration': 250, 'x': 2142, 'y': 431, 'origin': 'viewport'}, {'type': 'pointerDown', 'duration': 0, 'button': 0}, {'type': 'pause', 'duration': 100}, {'type': 'pointerUp', 'duration': 0, 'button': 0}]}]}
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:4723 "POST /session/0a5e5178-8a97-4351-9531-9c4b399b7bf3/actions HTTP/1.1" 200 0
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:437 Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'X-Powered-By': 'Express', 'Vary': 'X-HTTP-Method-Override', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '14', 'ETag': 'W/"e-9/1BuKMgFObM1mWJm+YjxtXJnUM"', 'Date': 'Fri, 16 Jan 2026 10:27:21 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=600'})
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:466 Finished Request
+INFO     root:custom_points_page.py:44 [CustomPointsPage] 点击编辑
+INFO     root:action_executor.py:59 [ACTION] click_point: custom_points.edit
+INFO     root:action_executor.py:17 [ACTION] 点击坐标: (2157, 1748)
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:404 POST http://localhost:4723/session/0a5e5178-8a97-4351-9531-9c4b399b7bf3/actions {'actions': [{'type': 'pointer', 'parameters': {'pointerType': 'touch'}, 'id': 'touch', 'actions': [{'type': 'pointerMove', 'duration': 250, 'x': 2157, 'y': 1748, 'origin': 'viewport'}, {'type': 'pointerDown', 'duration': 0, 'button': 0}, {'type': 'pause', 'duration': 100}, {'type': 'pointerUp', 'duration': 0, 'button': 0}]}]}
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:4723 "POST /session/0a5e5178-8a97-4351-9531-9c4b399b7bf3/actions HTTP/1.1" 200 0
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:437 Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'X-Powered-By': 'Express', 'Vary': 'X-HTTP-Method-Override', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '14', 'ETag': 'W/"e-9/1BuKMgFObM1mWJm+YjxtXJnUM"', 'Date': 'Fri, 16 Jan 2026 10:27:22 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=600'})
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:466 Finished Request
+INFO     root:custom_points_page.py:49 [CustomPointsPage] 点击还原
+INFO     root:action_executor.py:59 [ACTION] click_point: custom_points.restore
+INFO     root:action_executor.py:17 [ACTION] 点击坐标: (1987, 1740)
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:404 POST http://localhost:4723/session/0a5e5178-8a97-4351-9531-9c4b399b7bf3/actions {'actions': [{'type': 'pointer', 'parameters': {'pointerType': 'touch'}, 'id': 'touch', 'actions': [{'type': 'pointerMove', 'duration': 250, 'x': 1987, 'y': 1740, 'origin': 'viewport'}, {'type': 'pointerDown', 'duration': 0, 'button': 0}, {'type': 'pause', 'duration': 100}, {'type': 'pointerUp', 'duration': 0, 'button': 0}]}]}
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:4723 "POST /session/0a5e5178-8a97-4351-9531-9c4b399b7bf3/actions HTTP/1.1" 200 0
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:437 Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'X-Powered-By': 'Express', 'Vary': 'X-HTTP-Method-Override', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '14', 'ETag': 'W/"e-9/1BuKMgFObM1mWJm+YjxtXJnUM"', 'Date': 'Fri, 16 Jan 2026 10:27:23 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=600'})
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:466 Finished Request
+INFO     root:custom_points_flow.py:49 【自定义点位】准备删除点位数: 2
+INFO     root:custom_points_page.py:75 [CustomPointsPage] 批量删除点位: 2 次
+INFO     root:custom_points_page.py:59 [CustomPointsPage] 点击删除
+INFO     root:action_executor.py:59 [ACTION] click_point: custom_points.delete
+INFO     root:action_executor.py:17 [ACTION] 点击坐标: (2469, 431)
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:404 POST http://localhost:4723/session/0a5e5178-8a97-4351-9531-9c4b399b7bf3/actions {'actions': [{'type': 'pointer', 'parameters': {'pointerType': 'touch'}, 'id': 'touch', 'actions': [{'type': 'pointerMove', 'duration': 250, 'x': 2469, 'y': 431, 'origin': 'viewport'}, {'type': 'pointerDown', 'duration': 0, 'button': 0}, {'type': 'pause', 'duration': 100}, {'type': 'pointerUp', 'duration': 0, 'button': 0}]}]}
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:4723 "POST /session/0a5e5178-8a97-4351-9531-9c4b399b7bf3/actions HTTP/1.1" 200 0
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:437 Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'X-Powered-By': 'Express', 'Vary': 'X-HTTP-Method-Override', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '14', 'ETag': 'W/"e-9/1BuKMgFObM1mWJm+YjxtXJnUM"', 'Date': 'Fri, 16 Jan 2026 10:27:24 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=600'})
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:466 Finished Request
+INFO     root:custom_points_page.py:59 [CustomPointsPage] 点击删除
+INFO     root:action_executor.py:59 [ACTION] click_point: custom_points.delete
+INFO     root:action_executor.py:17 [ACTION] 点击坐标: (2469, 431)
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:404 POST http://localhost:4723/session/0a5e5178-8a97-4351-9531-9c4b399b7bf3/actions {'actions': [{'type': 'pointer', 'parameters': {'pointerType': 'touch'}, 'id': 'touch', 'actions': [{'type': 'pointerMove', 'duration': 250, 'x': 2469, 'y': 431, 'origin': 'viewport'}, {'type': 'pointerDown', 'duration': 0, 'button': 0}, {'type': 'pause', 'duration': 100}, {'type': 'pointerUp', 'duration': 0, 'button': 0}]}]}
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:4723 "POST /session/0a5e5178-8a97-4351-9531-9c4b399b7bf3/actions HTTP/1.1" 200 0
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:437 Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'X-Powered-By': 'Express', 'Vary': 'X-HTTP-Method-Override', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '14', 'ETag': 'W/"e-9/1BuKMgFObM1mWJm+YjxtXJnUM"', 'Date': 'Fri, 16 Jan 2026 10:27:25 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=600'})
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:466 Finished Request
+INFO     root:custom_points_flow.py:54 【自定义点位】准备添加点位数: 8
+INFO     root:custom_points_page.py:69 [CustomPointsPage] 批量添加点位: 8 次
+INFO     root:custom_points_page.py:54 [CustomPointsPage] 点击添加
+INFO     root:action_executor.py:59 [ACTION] click_point: custom_points.add
+INFO     root:action_executor.py:17 [ACTION] 点击坐标: (2469, 1519)
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:404 POST http://localhost:4723/session/0a5e5178-8a97-4351-9531-9c4b399b7bf3/actions {'actions': [{'type': 'pointer', 'parameters': {'pointerType': 'touch'}, 'id': 'touch', 'actions': [{'type': 'pointerMove', 'duration': 250, 'x': 2469, 'y': 1519, 'origin': 'viewport'}, {'type': 'pointerDown', 'duration': 0, 'button': 0}, {'type': 'pause', 'duration': 100}, {'type': 'pointerUp', 'duration': 0, 'button': 0}]}]}
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:4723 "POST /session/0a5e5178-8a97-4351-9531-9c4b399b7bf3/actions HTTP/1.1" 200 0
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:437 Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'X-Powered-By': 'Express', 'Vary': 'X-HTTP-Method-Override', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '14', 'ETag': 'W/"e-9/1BuKMgFObM1mWJm+YjxtXJnUM"', 'Date': 'Fri, 16 Jan 2026 10:27:26 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=600'})
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:466 Finished Request
+INFO     root:custom_points_page.py:54 [CustomPointsPage] 点击添加
+INFO     root:action_executor.py:59 [ACTION] click_point: custom_points.add
+INFO     root:action_executor.py:17 [ACTION] 点击坐标: (2469, 1519)
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:404 POST http://localhost:4723/session/0a5e5178-8a97-4351-9531-9c4b399b7bf3/actions {'actions': [{'type': 'pointer', 'parameters': {'pointerType': 'touch'}, 'id': 'touch', 'actions': [{'type': 'pointerMove', 'duration': 250, 'x': 2469, 'y': 1519, 'origin': 'viewport'}, {'type': 'pointerDown', 'duration': 0, 'button': 0}, {'type': 'pause', 'duration': 100}, {'type': 'pointerUp', 'duration': 0, 'button': 0}]}]}
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:4723 "POST /session/0a5e5178-8a97-4351-9531-9c4b399b7bf3/actions HTTP/1.1" 200 0
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:437 Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'X-Powered-By': 'Express', 'Vary': 'X-HTTP-Method-Override', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '14', 'ETag': 'W/"e-9/1BuKMgFObM1mWJm+YjxtXJnUM"', 'Date': 'Fri, 16 Jan 2026 10:27:27 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=600'})
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:466 Finished Request
+INFO     root:custom_points_page.py:54 [CustomPointsPage] 点击添加
+INFO     root:action_executor.py:59 [ACTION] click_point: custom_points.add
+INFO     root:action_executor.py:17 [ACTION] 点击坐标: (2469, 1519)
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:404 POST http://localhost:4723/session/0a5e5178-8a97-4351-9531-9c4b399b7bf3/actions {'actions': [{'type': 'pointer', 'parameters': {'pointerType': 'touch'}, 'id': 'touch', 'actions': [{'type': 'pointerMove', 'duration': 250, 'x': 2469, 'y': 1519, 'origin': 'viewport'}, {'type': 'pointerDown', 'duration': 0, 'button': 0}, {'type': 'pause', 'duration': 100}, {'type': 'pointerUp', 'duration': 0, 'button': 0}]}]}
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:4723 "POST /session/0a5e5178-8a97-4351-9531-9c4b399b7bf3/actions HTTP/1.1" 200 0
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:437 Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'X-Powered-By': 'Express', 'Vary': 'X-HTTP-Method-Override', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '14', 'ETag': 'W/"e-9/1BuKMgFObM1mWJm+YjxtXJnUM"', 'Date': 'Fri, 16 Jan 2026 10:27:28 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=600'})
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:466 Finished Request
+INFO     root:custom_points_page.py:54 [CustomPointsPage] 点击添加
+INFO     root:action_executor.py:59 [ACTION] click_point: custom_points.add
+INFO     root:action_executor.py:17 [ACTION] 点击坐标: (2469, 1519)
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:404 POST http://localhost:4723/session/0a5e5178-8a97-4351-9531-9c4b399b7bf3/actions {'actions': [{'type': 'pointer', 'parameters': {'pointerType': 'touch'}, 'id': 'touch', 'actions': [{'type': 'pointerMove', 'duration': 250, 'x': 2469, 'y': 1519, 'origin': 'viewport'}, {'type': 'pointerDown', 'duration': 0, 'button': 0}, {'type': 'pause', 'duration': 100}, {'type': 'pointerUp', 'duration': 0, 'button': 0}]}]}
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:4723 "POST /session/0a5e5178-8a97-4351-9531-9c4b399b7bf3/actions HTTP/1.1" 200 0
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:437 Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'X-Powered-By': 'Express', 'Vary': 'X-HTTP-Method-Override', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '14', 'ETag': 'W/"e-9/1BuKMgFObM1mWJm+YjxtXJnUM"', 'Date': 'Fri, 16 Jan 2026 10:27:29 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=600'})
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:466 Finished Request
+INFO     root:custom_points_page.py:54 [CustomPointsPage] 点击添加
+INFO     root:action_executor.py:59 [ACTION] click_point: custom_points.add
+INFO     root:action_executor.py:17 [ACTION] 点击坐标: (2469, 1519)
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:404 POST http://localhost:4723/session/0a5e5178-8a97-4351-9531-9c4b399b7bf3/actions {'actions': [{'type': 'pointer', 'parameters': {'pointerType': 'touch'}, 'id': 'touch', 'actions': [{'type': 'pointerMove', 'duration': 250, 'x': 2469, 'y': 1519, 'origin': 'viewport'}, {'type': 'pointerDown', 'duration': 0, 'button': 0}, {'type': 'pause', 'duration': 100}, {'type': 'pointerUp', 'duration': 0, 'button': 0}]}]}
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:4723 "POST /session/0a5e5178-8a97-4351-9531-9c4b399b7bf3/actions HTTP/1.1" 200 0
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:437 Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'X-Powered-By': 'Express', 'Vary': 'X-HTTP-Method-Override', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '14', 'ETag': 'W/"e-9/1BuKMgFObM1mWJm+YjxtXJnUM"', 'Date': 'Fri, 16 Jan 2026 10:27:29 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=600'})
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:466 Finished Request
+INFO     root:custom_points_page.py:54 [CustomPointsPage] 点击添加
+INFO     root:action_executor.py:59 [ACTION] click_point: custom_points.add
+INFO     root:action_executor.py:17 [ACTION] 点击坐标: (2469, 1519)
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:404 POST http://localhost:4723/session/0a5e5178-8a97-4351-9531-9c4b399b7bf3/actions {'actions': [{'type': 'pointer', 'parameters': {'pointerType': 'touch'}, 'id': 'touch', 'actions': [{'type': 'pointerMove', 'duration': 250, 'x': 2469, 'y': 1519, 'origin': 'viewport'}, {'type': 'pointerDown', 'duration': 0, 'button': 0}, {'type': 'pause', 'duration': 100}, {'type': 'pointerUp', 'duration': 0, 'button': 0}]}]}
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:4723 "POST /session/0a5e5178-8a97-4351-9531-9c4b399b7bf3/actions HTTP/1.1" 200 0
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:437 Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'X-Powered-By': 'Express', 'Vary': 'X-HTTP-Method-Override', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '14', 'ETag': 'W/"e-9/1BuKMgFObM1mWJm+YjxtXJnUM"', 'Date': 'Fri, 16 Jan 2026 10:27:30 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=600'})
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:466 Finished Request
+INFO     root:custom_points_page.py:54 [CustomPointsPage] 点击添加
+INFO     root:action_executor.py:59 [ACTION] click_point: custom_points.add
+INFO     root:action_executor.py:17 [ACTION] 点击坐标: (2469, 1519)
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:404 POST http://localhost:4723/session/0a5e5178-8a97-4351-9531-9c4b399b7bf3/actions {'actions': [{'type': 'pointer', 'parameters': {'pointerType': 'touch'}, 'id': 'touch', 'actions': [{'type': 'pointerMove', 'duration': 250, 'x': 2469, 'y': 1519, 'origin': 'viewport'}, {'type': 'pointerDown', 'duration': 0, 'button': 0}, {'type': 'pause', 'duration': 100}, {'type': 'pointerUp', 'duration': 0, 'button': 0}]}]}
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:4723 "POST /session/0a5e5178-8a97-4351-9531-9c4b399b7bf3/actions HTTP/1.1" 200 0
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:437 Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'X-Powered-By': 'Express', 'Vary': 'X-HTTP-Method-Override', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '14', 'ETag': 'W/"e-9/1BuKMgFObM1mWJm+YjxtXJnUM"', 'Date': 'Fri, 16 Jan 2026 10:27:31 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=600'})
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:466 Finished Request
+INFO     root:custom_points_page.py:54 [CustomPointsPage] 点击添加
+INFO     root:action_executor.py:59 [ACTION] click_point: custom_points.add
+INFO     root:action_executor.py:17 [ACTION] 点击坐标: (2469, 1519)
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:404 POST http://localhost:4723/session/0a5e5178-8a97-4351-9531-9c4b399b7bf3/actions {'actions': [{'type': 'pointer', 'parameters': {'pointerType': 'touch'}, 'id': 'touch', 'actions': [{'type': 'pointerMove', 'duration': 250, 'x': 2469, 'y': 1519, 'origin': 'viewport'}, {'type': 'pointerDown', 'duration': 0, 'button': 0}, {'type': 'pause', 'duration': 100}, {'type': 'pointerUp', 'duration': 0, 'button': 0}]}]}
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:4723 "POST /session/0a5e5178-8a97-4351-9531-9c4b399b7bf3/actions HTTP/1.1" 200 0
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:437 Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'X-Powered-By': 'Express', 'Vary': 'X-HTTP-Method-Override', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '14', 'ETag': 'W/"e-9/1BuKMgFObM1mWJm+YjxtXJnUM"', 'Date': 'Fri, 16 Jan 2026 10:27:32 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=600'})
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:466 Finished Request
+INFO     root:custom_points_page.py:64 [CustomPointsPage] 点击完成
+INFO     root:action_executor.py:59 [ACTION] click_point: custom_points.finish
+INFO     root:action_executor.py:17 [ACTION] 点击坐标: (2329, 1748)
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:404 POST http://localhost:4723/session/0a5e5178-8a97-4351-9531-9c4b399b7bf3/actions {'actions': [{'type': 'pointer', 'parameters': {'pointerType': 'touch'}, 'id': 'touch', 'actions': [{'type': 'pointerMove', 'duration': 250, 'x': 2329, 'y': 1748, 'origin': 'viewport'}, {'type': 'pointerDown', 'duration': 0, 'button': 0}, {'type': 'pause', 'duration': 100}, {'type': 'pointerUp', 'duration': 0, 'button': 0}]}]}
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:4723 "POST /session/0a5e5178-8a97-4351-9531-9c4b399b7bf3/actions HTTP/1.1" 200 0
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:437 Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'X-Powered-By': 'Express', 'Vary': 'X-HTTP-Method-Override', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '14', 'ETag': 'W/"e-9/1BuKMgFObM1mWJm+YjxtXJnUM"', 'Date': 'Fri, 16 Jan 2026 10:27:33 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=600'})
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:466 Finished Request
+INFO     root:common_page.py:15 [CommonPage] 点击返回
+INFO     root:action_executor.py:59 [ACTION] click_point: common.back
+INFO     root:action_executor.py:17 [ACTION] 点击坐标: (216, 108)
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:404 POST http://localhost:4723/session/0a5e5178-8a97-4351-9531-9c4b399b7bf3/actions {'actions': [{'type': 'pointer', 'parameters': {'pointerType': 'touch'}, 'id': 'touch', 'actions': [{'type': 'pointerMove', 'duration': 250, 'x': 216, 'y': 108, 'origin': 'viewport'}, {'type': 'pointerDown', 'duration': 0, 'button': 0}, {'type': 'pause', 'duration': 100}, {'type': 'pointerUp', 'duration': 0, 'button': 0}]}]}
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:4723 "POST /session/0a5e5178-8a97-4351-9531-9c4b399b7bf3/actions HTTP/1.1" 200 0
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:437 Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'X-Powered-By': 'Express', 'Vary': 'X-HTTP-Method-Override', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '14', 'ETag': 'W/"e-9/1BuKMgFObM1mWJm+YjxtXJnUM"', 'Date': 'Fri, 16 Jan 2026 10:27:34 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=600'})
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:466 Finished Request
+INFO     root:custom_points_flow.py:65 【自定义点位】删除次数: 2, 添加次数: 8
+INFO     root:custom_points_flow.py:66 【自定义点位】最终点位总数: 21
+INFO     root:custom_points_flow.py:67 【自定义点位】返回值: [11, 2, 1, 11]
+INFO     root:custom_points_flow.py:68 ==================================================
+INFO     root:test_custom_points.py:63 测试通过，返回值: [11, 2, 1, 11]
+INFO     root:test_custom_points.py:67 ============================================================
+INFO     root:test_custom_points.py:68 开始测试: test_custom_points_simple_flow
+INFO     root:test_custom_points.py:69 ============================================================
+INFO     root:custom_points_flow.py:76 【自定义点位】执行简化流程
+INFO     root:home_page.py:23 [HomePage] 进入自定义点位
+INFO     root:action_executor.py:59 [ACTION] click_point: home.custom_points
+INFO     root:action_executor.py:17 [ACTION] 点击坐标: (1905, 763)
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:404 POST http://localhost:4723/session/0a5e5178-8a97-4351-9531-9c4b399b7bf3/actions {'actions': [{'type': 'pointer', 'parameters': {'pointerType': 'touch'}, 'id': 'touch', 'actions': [{'type': 'pointerMove', 'duration': 250, 'x': 1905, 'y': 763, 'origin': 'viewport'}, {'type': 'pointerDown', 'duration': 0, 'button': 0}, {'type': 'pause', 'duration': 100}, {'type': 'pointerUp', 'duration': 0, 'button': 0}]}]}
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:4723 "POST /session/0a5e5178-8a97-4351-9531-9c4b399b7bf3/actions HTTP/1.1" 200 0
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:437 Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'X-Powered-By': 'Express', 'Vary': 'X-HTTP-Method-Override', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '14', 'ETag': 'W/"e-9/1BuKMgFObM1mWJm+YjxtXJnUM"', 'Date': 'Fri, 16 Jan 2026 10:27:35 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=600'})
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:466 Finished Request
+INFO     root:common_page.py:15 [CommonPage] 点击返回
+INFO     root:action_executor.py:59 [ACTION] click_point: common.back
+INFO     root:action_executor.py:17 [ACTION] 点击坐标: (216, 108)
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:404 POST http://localhost:4723/session/0a5e5178-8a97-4351-9531-9c4b399b7bf3/actions {'actions': [{'type': 'pointer', 'parameters': {'pointerType': 'touch'}, 'id': 'touch', 'actions': [{'type': 'pointerMove', 'duration': 250, 'x': 216, 'y': 108, 'origin': 'viewport'}, {'type': 'pointerDown', 'duration': 0, 'button': 0}, {'type': 'pause', 'duration': 100}, {'type': 'pointerUp', 'duration': 0, 'button': 0}]}]}
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:4723 "POST /session/0a5e5178-8a97-4351-9531-9c4b399b7bf3/actions HTTP/1.1" 200 0
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:437 Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'X-Powered-By': 'Express', 'Vary': 'X-HTTP-Method-Override', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '14', 'ETag': 'W/"e-9/1BuKMgFObM1mWJm+YjxtXJnUM"', 'Date': 'Fri, 16 Jan 2026 10:27:36 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=600'})
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:466 Finished Request
+INFO     root:test_custom_points.py:74 简化流程测试完成
+INFO     root:test_custom_points.py:88 删除: 1, 添加: 1, 最终点位: 21, 拆分: [11, 11]
+INFO     root:test_custom_points.py:88 删除: 5, 添加: 3, 最终点位: 17, 拆分: [9, 9]
+INFO     root:test_custom_points.py:88 删除: 2, 添加: 8, 最终点位: 21, 拆分: [11, 11]
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:404 DELETE http://localhost:4723/session/0a5e5178-8a97-4351-9531-9c4b399b7bf3 {}
+DEBUG    urllib3.connectionpool:connectionpool.py:544 http://localhost:4723 "DELETE /session/0a5e5178-8a97-4351-9531-9c4b399b7bf3 HTTP/1.1" 200 0
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:437 Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'X-Powered-By': 'Express', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '14', 'ETag': 'W/"e-9/1BuKMgFObM1mWJm+YjxtXJnUM"', 'Date': 'Fri, 16 Jan 2026 10:27:37 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=600'})
+DEBUG    selenium.webdriver.remote.remote_connection:remote_connection.py:466 Finished Request
+INFO     root:driver_manager.py:30 驱动已关闭

@@ -1,0 +1,425 @@
+# UIAutoFrame - Android UI 自动化测试框架 AI 使用规则
+
+## 项目概述
+
+这是一个基于 Appium + Pytest + Page Object 模式的 Android UI 自动化测试框架。
+项目采用分层架构设计，强调职责分离、可复用性和可扩展性。
+
+---
+
+## 核心架构分层
+
+### 1. 配置层 (config/)
+**职责**: 存储所有可配置项，实现配置与代码分离
+
+```
+config/
+  ├── device.yaml      # 设备配置（平台、版本、设备名等）
+  ├── app.yaml         # 应用配置（包名、Activity等）
+  ├── env.yaml         # 环境配置（Appium地址、超时、重试等）
+  └── points.yaml      # 坐标点位配置
+```
+
+**规则**:
+- 所有硬编码的配置必须迁移到 yaml 文件
+- 禁止在代码中直接写死设备名、包名、坐标等
+- 新增配置项时必须添加注释说明
+
+---
+
+### 2. 核心层 (core/)
+**职责**: 提供框架级通用能力，与具体业务无关
+
+```
+core/
+  ├── driver/          # Appium 驱动管理
+  │   └── driver_manager.py
+  ├── executor/        # UI 操作执行器（点击、输入、滑动等）
+  │   └── action_executor.py
+  ├── logger/          # 日志管理
+  │   └── logger.py
+  ├── assertion/       # 断言封装
+  │   ├── base_assert.py
+  │   ├── app_assert.py    # 应用级断言
+  │   └── page_assert.py   # 页面级断言
+  └── utils/           # 工具类
+      ├── config_loader.py   # 配置加载器
+      ├── screenshot.py      # 截图助手
+      ├── retry.py           # 重试装饰器
+      ├── points_loader.py   # 坐标加载器
+      └── ...
+```
+
+**规则**:
+- core 层代码必须与具体业务解耦，可独立复用到其他项目
+- ActionExecutor 只封装原子操作，不包含业务逻辑
+- 所有底层操作必须添加日志和重试机制
+- 禁止在 core 层引用 pages、workflows、testcases 层代码
+
+**示例**:
+```python
+# ✅ 正确：封装原子操作
+def click(self, x, y):
+    logging.info(f"[ACTION] 点击坐标: ({x}, {y})")
+    self.driver.tap([(int(x), int(y))], 100)
+
+# ❌ 错误：包含业务逻辑
+def click_and_verify_success(self, x, y):
+    self.click(x, y)
+    assert self.find_element("成功提示")  # 业务断言不应在此
+```
+
+---
+
+### 3. 页面层 (pages/)
+**职责**: 封装页面元素定位和页面级原子操作
+
+```
+pages/
+  ├── common_page.py              # 通用页面（返回按钮等跨页面元素）
+  ├── home_page.py                # 主页
+  ├── custom_points_page.py       # 自定义点位页面
+  ├── intelligent_detection_page.py
+  ├── routine_detection_page.py
+  └── user_profiles_page.py
+```
+
+**职责边界**:
+- **允许**: 定义元素定位符、封装单个页面的原子操作（点击某按钮、输入某字段）
+- **禁止**: 跨页面的业务流程、复杂的业务逻辑
+
+**代码规范**:
+```python
+class CustomPointsPage:
+    """自定义点位页面"""
+    
+    # 1. 元素定位（使用 points.yaml 中的 key）
+    ADD = "custom_points.add"
+    DELETE = "custom_points.delete"
+    
+    def __init__(self, executor):
+        self.ex = executor
+    
+    # 2. 页面级原子操作（单一职责）
+    def click_add(self):
+        """点击添加按钮"""
+        logging.info("[CustomPointsPage] 点击添加")
+        self.ex.click_point(self.ADD)
+    
+    # 3. 批量操作（仍属于页面级）
+    def add_points(self, count):
+        """批量添加点位"""
+        for _ in range(count):
+            self.click_add()
+```
+
+**禁止的写法**:
+```python
+# ❌ 错误：跨页面操作
+def goto_home_and_add_points(self):
+    self.ex.click_point("common.back")  # 返回首页
+    self.ex.click_point("home.custom_points")  # 进入自定义点位
+    self.add_points(5)  # 这是跨页面流程，应放在 workflow 层
+
+# ❌ 错误：包含业务逻辑
+def add_points_and_verify(self):
+    self.add_points(5)
+    assert self.get_point_count() == 5  # 业务断言应在 testcase 层
+```
+
+---
+
+### 4. 工作流层 (workflows/)
+**职责**: 组装页面操作，完成业务流程
+
+```
+workflows/
+  ├── custom_points_flow.py           # 自定义点位业务流程
+  ├── intelligent_detection_flow.py   # 智能检测流程
+  ├── routine_detection_flow.py       # 常规检测流程
+  └── components/                     # 可复用的流程组件
+      ├── freeze_and_save_step.py
+      ├── report_common_step.py
+      └── user_input_step.py
+```
+
+**职责边界**:
+- **允许**: 组合多个页面操作完成业务流程、处理流程中的数据传递
+- **禁止**: 直接调用 ActionExecutor 的底层操作、包含断言逻辑
+
+**代码规范**:
+```python
+class CustomPointsFlow:
+    """自定义点位业务流程"""
+    
+    def __init__(self, executor):
+        self.ex = executor
+        # 初始化依赖的页面对象
+        self.home_page = HomePage(executor)
+        self.custom_page = CustomPointsPage(executor)
+        self.common_page = CommonPage(executor)
+    
+    def run_full_flow(self):
+        """执行完整流程"""
+        # 1. 进入页面
+        self.home_page.goto_custom_points()
+        
+        # 2. 执行页面操作
+        self.custom_page.click_front_face()
+        self.custom_page.click_side_face()
+        
+        # 3. 业务逻辑处理
+        del_count = random.randint(1, 10)
+        self.custom_page.delete_points(del_count)
+        
+        # 4. 返回计算结果
+        return self._calculate_result(del_count)
+```
+
+**禁止的写法**:
+```python
+# ❌ 错误：直接调用底层操作
+def run_flow(self):
+    self.ex.click(1905, 763)  # 应调用 page 层的方法
+
+# ❌ 错误：包含断言
+def run_flow(self):
+    self.custom_page.add_points(5)
+    assert self.custom_page.get_count() == 5  # 断言应在 testcase 层
+```
+
+---
+
+### 5. 测试用例层 (testcases/)
+**职责**: 编写 pytest 测试用例，调用 workflows，执行断言
+
+```
+testcases/
+  ├── test_custom_points.py
+  ├── test_intelligent_detection.py
+  ├── test_routine_detection.py
+  └── test_full_process.py
+```
+
+**代码规范**:
+```python
+class TestCustomPoints:
+    """自定义点位测试类"""
+    
+    def test_custom_points_full_flow(self, executor):
+        """测试完整流程"""
+        # 1. 执行业务流程
+        flow = CustomPointsFlow(executor)
+        result = flow.run_full_flow()
+        
+        # 2. 断言
+        assert isinstance(result, list)
+        assert len(result) == 4
+        
+        logging.info(f"测试通过，返回值: {result}")
+```
+
+**规则**:
+- 测试用例只调用 workflow 层，不直接操作 page 层
+- 所有断言必须在测试用例层完成
+- 使用 pytest fixture 管理 driver 和 executor 生命周期
+- 测试失败时自动截图
+
+---
+
+## 数据流向规则
+
+```
+testcases (断言层)
+    ↓ 调用
+workflows (业务流程层)
+    ↓ 调用
+pages (页面操作层)
+    ↓ 调用
+core/executor (动作执行层)
+    ↓ 调用
+core/driver (驱动层)
+```
+
+**严格禁止**:
+- ❌ testcases 直接调用 pages 或 core
+- ❌ workflows 直接调用 core/executor 的 click/input（必须通过 pages）
+- ❌ pages 调用 workflows
+- ❌ 任何层级直接写死坐标、包名、设备名
+
+---
+
+## 编码规范
+
+### 1. 日志规范
+```python
+# ✅ 正确：按层级添加标识
+logging.info("[HomePage] 进入自定义点位")
+logging.info("[CustomPointsFlow] 开始完整流程")
+logging.error("[ActionExecutor] 点击失败", exc_info=True)
+
+# ❌ 错误：无层级标识
+logging.info("进入页面")
+```
+
+### 2. 异常处理
+```python
+# ✅ 正确：使用重试装饰器
+@retry(max_attempts=3, interval=1)
+def click(self, x, y):
+    self.driver.tap([(int(x), int(y))], 100)
+
+# ✅ 正确：捕获并记录异常
+try:
+    self.ex.click_point(point_name)
+except Exception as e:
+    logging.error(f"点击失败: {point_name}", exc_info=True)
+    screenshot_helper.take_screenshot("click_failed")
+    raise
+```
+
+### 3. 配置加载
+```python
+# ✅ 正确：使用配置加载器
+from core.utils.config_loader import ConfigLoader
+config_loader = ConfigLoader()
+caps = config_loader.get_merged_caps(device_key="default")
+
+# ❌ 错误：硬编码
+caps = {
+    'deviceName': 'AU6NBB5328000488',  # 硬编码设备名
+    'appPackage': 'com.ultrasound.peninsula'
+}
+```
+
+### 4. 坐标管理
+```python
+# ✅ 正确：使用 points.yaml
+self.ex.click_point("home.custom_points")
+
+# ❌ 错误：硬编码坐标
+self.ex.click(1905, 763)
+```
+
+---
+
+## 新增功能指南
+
+### 场景1：新增一个页面
+1. 在 `config/points.yaml` 添加坐标配置
+2. 在 `pages/` 创建 `new_page.py`，定义元素和页面操作
+3. 在 `workflows/` 创建对应的业务流程
+4. 在 `testcases/` 编写测试用例
+
+### 场景2：新增一个业务流程
+1. 复用已有的 pages 对象
+2. 在 `workflows/` 创建新的 flow 类
+3. 组装页面操作完成流程
+4. 在 `testcases/` 编写测试用例
+
+### 场景3：接入新项目
+1. 修改 `config/app.yaml` 添加新应用配置
+2. 修改 `config/device.yaml` 添加新设备（如需要）
+3. 修改 `config/points.yaml` 添加新坐标
+4. 新增对应的 pages 和 workflows
+
+---
+
+## AI 助手约束规则
+
+### 强制规则（必须遵守）
+
+1. **分层约束**
+   - 绝不允许跨层级调用（如 testcase 直接调用 executor）
+   - 绝不允许在 core 层引入业务逻辑
+   - 绝不允许在 pages 层写跨页面流程
+
+2. **配置约束**
+   - 禁止硬编码设备名、包名、坐标
+   - 所有可配置项必须放在 yaml 文件中
+
+3. **日志约束**
+   - 所有操作必须添加日志
+   - 日志必须包含层级标识
+
+4. **代码复用**
+   - 相同的操作必须封装，禁止复制粘贴
+   - 优先使用已有的 pages 和 utils
+
+### 提醒规则（冲突时主动告知）
+
+当用户提出以下需求时，AI 应主动提醒：
+
+- "在测试用例里直接点击坐标" → 提醒：应通过 workflow → pages → executor
+- "在 page 里加个完整流程" → 提醒：跨页面流程应放在 workflow 层
+- "加个设备配置" → 提醒：应在 config/device.yaml 中添加
+- "在 core 里加业务逻辑" → 提醒：core 层应保持通用，业务逻辑放 workflow
+
+### 回答模板
+
+```
+【架构提醒】
+您的需求涉及 XX 层，但 YY 应该放在 ZZ 层。
+
+【推荐方案】
+1. 在 AA 层完成 ...
+2. 在 BB 层完成 ...
+
+【理由】
+这样做符合分层架构原则，便于后续维护和扩展。
+```
+
+---
+
+## 项目适用范围
+
+- **当前规模**: 适合中小型 Android UI 自动化项目（< 50个测试用例）
+- **团队规模**: 1-5人
+- **维护成本**: 新增一个页面需要约 30-60 分钟（pages + workflows + testcases）
+- **扩展性**: 可通过修改 config 快速接入新设备、新应用
+
+---
+
+## 快速参考
+
+### 运行测试
+```bash
+# 运行所有测试
+pytest
+
+# 运行单个测试文件
+pytest testcases/test_custom_points.py
+
+# 运行指定用例
+pytest testcases/test_custom_points.py::TestCustomPoints::test_custom_points_full_flow
+
+# 查看 HTML 报告
+# 报告位置: artifacts/reports/report.html
+```
+
+### 快速调试
+```bash
+# 使用 run.py 快速验证功能
+python run.py
+```
+
+### 目录结构一览
+```
+UIAutoFrame/
+├── config/              # 配置层
+├── core/                # 核心能力层（框架级）
+├── pages/               # 页面对象层（业务级）
+├── workflows/           # 业务流程层（业务级）
+├── testcases/           # 测试用例层（业务级）
+├── artifacts/           # 输出产物（日志、截图、报告）
+├── requirements.txt     # 依赖管理
+├── pytest.ini           # pytest 配置Ctrl+K V
+├── conftest.py          # pytest 全局配置
+└── run.py               # 快速调试入口
+```
+
+---
+
+**最后更新**: 2026-01-14  
+**维护者**: 自动化测试团队
+

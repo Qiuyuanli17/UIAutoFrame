@@ -8,72 +8,71 @@ from core.utils.custom_points_calc import (
     split_points_for_values
 )
 
+
 class CustomPointsFlow:
+    """自定义点位业务流程"""
 
     def __init__(self, executor):
         self.ex = executor
-
-    def enter_custom_points(self):
-        self.ex.click_point(HomePage.CUSTOM_POINTS)
-
-    def select_face_parts(self):
-        self.ex.click_point(CustomPointsPage.FRONT_FACE)      # 正脸
-        self.ex.click_point(CustomPointsPage.SIDE_FACE)       # 侧脸
-        self.ex.click_point(CustomPointsPage.SUBMENTUM)       # 颏下
-
-    def open_first_point(self):
-        self.ex.click_point(CustomPointsPage.POINT_ITEM)
-
-    def reset_points(self):
-        self.ex.click_point(CustomPointsPage.EDIT)  # 编辑
-        self.ex.click_point(CustomPointsPage.RESTORE)  # 还原
-
-    def delete_points(self):
-        del_count = random.randint(1, 10)
-        for _ in range(del_count):
-            self.ex.click_point(CustomPointsPage.DELETE)
-        return del_count
-
-    def add_points(self):
-        add_count = random.randint(1, 10)
-        for _ in range(add_count):
-            self.ex.click_point(CustomPointsPage.ADD)
-        return add_count
-
-    def finish_and_back(self):
-        self.ex.click_point(CustomPointsPage.FINISH)
-        self.ex.click_point(CommonPage.BACK)
+        self.home_page = HomePage(executor)
+        self.custom_page = CustomPointsPage(executor)
+        self.common_page = CommonPage(executor)
 
     def run_full_flow(self):
         """
-        执行完整的自定义点位流程（等价于原一次性脚本）
+        执行完整的自定义点位流程
+        
+        Returns:
+            list: [first, 2, 1, last] 用于后续检测流程
         """
-
+        logging.info("=" * 50)
         logging.info("【自定义点位】开始完整流程")
+        logging.info("=" * 50)
 
-        self.enter_custom_points()
-        logging.info("【自定义点位】进入自定义点位页面")
+        # 1. 进入自定义点位
+        self.home_page.goto_custom_points()
 
-        self.select_face_parts()
-        logging.info("【自定义点位】遍历人脸朝向")
+        # 2. 选择人脸朝向
+        self.custom_page.click_front_face()
+        self.custom_page.click_side_face()
+        self.custom_page.click_submentum()
 
-        self.open_first_point()
-        logging.info("【自定义点位】点击第一个点位")
+        # 3. 打开第一个点位
+        self.custom_page.click_first_point()
 
-        self.reset_points()
-        logging.info("【自定义点位】点位还原完成")
+        # 4. 进入编辑模式并还原
+        self.custom_page.click_edit()
+        self.custom_page.click_restore()
 
-        del_count = self.delete_points()
-        logging.info(f"【自定义点位】删除点位数: {del_count}")
+        # 5. 随机删除点位
+        del_count = random.randint(1, 10)
+        logging.info(f"【自定义点位】准备删除点位数: {del_count}")
+        self.custom_page.delete_points(del_count)
 
-        add_count = self.add_points()
-        logging.info(f"【自定义点位】新增点位数: {add_count}")
+        # 6. 随机添加点位
+        add_count = random.randint(1, 10)
+        logging.info(f"【自定义点位】准备添加点位数: {add_count}")
+        self.custom_page.add_points(add_count)
 
-        self.finish_and_back()
-        logging.info("【自定义点位】完成并返回")
+        # 7. 完成编辑并返回
+        self.custom_page.click_finish()
+        self.common_page.go_back()
 
+        # 8. 计算最终点位数
         final_points = compute_custom_points(del_count, add_count)
         first, last = split_points_for_values(final_points)
-        logging.info(f"【自定义点位】最终点位结果: {final_points}")
+        
+        logging.info(f"【自定义点位】删除次数: {del_count}, 添加次数: {add_count}")
+        logging.info(f"【自定义点位】最终点位总数: {final_points}")
+        logging.info(f"【自定义点位】返回值: [{first}, 2, 1, {last}]")
+        logging.info("=" * 50)
 
         return [first, 2, 1, last]
+
+    def run_simple_flow(self):
+        """
+        简化流程：仅进入自定义点位页面并返回
+        """
+        logging.info("【自定义点位】执行简化流程")
+        self.home_page.goto_custom_points()
+        self.common_page.go_back()
